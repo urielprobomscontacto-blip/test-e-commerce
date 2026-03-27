@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
+import { CarritoContext } from '../context/CarritoContext';
 import { Link } from 'react-router-dom';
 import './EstilosPaginas.css'; // Usamos tus estilos existentes
 
 const PaginaExito = () => {
+  const { limpiarCarrito } = useContext(CarritoContext);
+
+  useEffect(() => {
+    // En cuanto el componente aparece en pantalla, ¡limpiamos!
+    limpiarCarrito();
+  }, []);
   return (
     <div className="contenedor-exito" style={estilosExtra}>
       <div className="tarjeta-exito">
