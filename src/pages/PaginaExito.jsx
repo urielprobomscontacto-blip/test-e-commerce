@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 import './EstilosPaginas.css'; // Usamos tus estilos existentes
 
 const PaginaExito = () => {
-  const { limpiarCarrito } = useContext(usarCarrito);
+  // AHORA: Usamos tu nuevo "gancho" y el nombre exacto de la función que pusimos en el contexto
+  const { vaciarCarritoCompletamente } = usarCarrito();
 
   useEffect(() => {
-    // En cuanto el componente aparece en pantalla, ¡limpiamos!
-    limpiarCarrito();
+    // Ejecutamos la función para que el carrito quede en cero
+    vaciarCarritoCompletamente();
   }, []);
+  
   return (
     <div className="contenedor-exito" style={estilosExtra}>
       <div className="tarjeta-exito">
