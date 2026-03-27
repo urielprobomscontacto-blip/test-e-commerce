@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from 'react';
-import { CarritoContext } from '../context/CarritoContext';
+import { usarCarrito } from "../context/CarritoContext";
 import { Link } from 'react-router-dom';
 import './EstilosPaginas.css'; // Usamos tus estilos existentes
 
 const PaginaExito = () => {
-  const { limpiarCarrito } = useContext(CarritoContext);
+  const { limpiarCarrito } = useContext(usarCarrito);
 
   useEffect(() => {
     // En cuanto el componente aparece en pantalla, ¡limpiamos!
