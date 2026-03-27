@@ -15,6 +15,8 @@ import { PaginaDelProducto } from './pages/PaginaDelProducto';
 // PAGINA DEL CARRITO
 import { PaginaCarrito } from './pages/PaginaCarrito';
 
+import PaginaExito from './pages/PaginaExito';
+
 export default function App() {
   return (
     <ProveedorDelCarrito> {/* <-- ENVOLVEMOS AQUÍ */}
@@ -26,6 +28,7 @@ export default function App() {
               <Route path="/" element={<PaginaPrincipal />} />
               <Route path="/producto/:identificadorDelProducto" element={<PaginaDelProducto />} />
               <Route path="/carrito" element={<PaginaCarrito />} /> {/* <-- NUEVA RUTA */}
+              <Route path="/exito" element={<PaginaExito />} />
             </Routes>
           </main>
           <FooterPrincipal />
