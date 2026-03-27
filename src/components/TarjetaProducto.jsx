@@ -22,14 +22,6 @@ export function TarjetaProducto({ datosDelProducto }) {
         alt={datosDelProducto.nombreDelProducto} 
         className="imagen-producto-tarjeta"
       />
-      {/* Al hacer clic en la imagen, vamos a /producto/id-del-producto */}
-      <Link to={`/producto/${datosDelProducto.identificadorUnico}`}>
-        <img 
-          src={datosDelProducto.imagenesDelProducto[0]} 
-          alt={datosDelProducto.nombreDelProducto} 
-          className="imagen-producto-tarjeta"
-        />
-      </Link>
       <div className="info-tarjeta">
         <Link to={`/producto/${datosDelProducto.identificadorUnico}`} style={{ textDecoration: 'none', color: 'inherit' }}>
           <h4 className="nombre-producto">{datosDelProducto.nombreDelProducto}</h4>

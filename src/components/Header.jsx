@@ -28,16 +28,6 @@ export function HeaderPrincipal() {
         <span className="indicador-cantidad-carrito">
           {totalDeArticulosAgregados}
         </span>
-
-        {/* Sección del carrito */}
-        <div className="seccion-acciones-header">
-          <button className="boton-carrito-compras">
-            <ShoppingCart size={24} color="#333333" />
-            <span className="indicador-cantidad-carrito">
-              {cantidadDeProductosEnCarrito}
-            </span>
-          </button>
-        </div>
       </div>
     </header>
   );

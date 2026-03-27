@@ -6,8 +6,8 @@
     "precioEnPesosMexicanos": 250.00,
     "categoriaDelProducto": "Ropa",
     "imagenesDelProducto": [
-      "/imagenes/camiseta-frente.jpg",
-      "/imagenes/camiseta-espalda.jpg"
+      "/productos/Camiseta_Blanca_Algodon_Puesta.png",
+      "/productos/Camiseta_Blanca_Algodon.png"
     ],
     "cantidadDisponibleEnInventario": 50,
     "productosRelacionadosPorId": ["prod_002", "prod_003"],
@@ -20,7 +20,8 @@
     "precioEnPesosMexicanos": 600.00,
     "categoriaDelProducto": "Ropa",
     "imagenesDelProducto": [
-      "/imagenes/pantalon-frente.jpg"
+      "/productos/Pantalon_Mezclilla_Frente.png",
+      "/productos/Pantalon_Mezclilla_Puesto.png"
     ],
     "cantidadDisponibleEnInventario": 20,
     "productosRelacionadosPorId": ["prod_001"],
