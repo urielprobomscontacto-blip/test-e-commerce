@@ -1,31 +1,50 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 
-// 1. Creamos la "nube" de datos
+// 1. Creamos la "nube" de datos (Contexto)
 const CarritoContextoPrivado = createContext();
 
 // 2. Este es el "Proveedor" que envolverá a toda la página
 export function ProveedorDelCarrito({ children }) {
-  const [listaDeProductosEnElCarrito, establecerListaDeProductos] = useState([]);
+  // CARGA INICIAL: Intentamos leer del almacenamiento del navegador al iniciar
+  const [listaDeProductosEnElCarrito, establecerListaDeProductos] = useState(() => {
+    const datosGuardados = localStorage.getItem('mi_carrito_real');
+    return datosGuardados ? JSON.parse(datosGuardados) : [];
+  });
 
-  // Función para agregar un producto
+  // PERSISTENCIA: Cada vez que el carrito cambie, lo guardamos en el navegador
+  useEffect(() => {
+    localStorage.setItem('mi_carrito_real', JSON.stringify(listaDeProductosEnElCarrito));
+  }, [listaDeProductosEnElCarrito]);
+
+  // --- FUNCIÓN: AGREGAR PRODUCTO ---
   const agregarProductoAlCarrito = (productoParaAgregar) => {
     establecerListaDeProductos((listaActual) => {
-      // Revisamos si el producto ya estaba en el carrito
       const productoYaExiste = listaActual.find(
         (item) => item.identificadorUnico === productoParaAgregar.identificadorUnico
       );
 
       if (productoYaExiste) {
-        // Si ya existe, solo le sumamos 1 a la cantidad
         return listaActual.map((item) =>
           item.identificadorUnico === productoParaAgregar.identificadorUnico
             ? { ...item, cantidadEnCarrito: item.cantidadEnCarrito + 1 }
             : item
         );
       }
-      // Si es nuevo, lo agregamos con cantidad 1
       return [...listaActual, { ...productoParaAgregar, cantidadEnCarrito: 1 }];
     });
+  };
+
+  // --- FUNCIÓN NUEVA: REMOVER PRODUCTO ---
+  const removerProductoDelCarrito = (idParaRemover) => {
+    establecerListaDeProductos((listaActual) => {
+      // Filtramos la lista: dejamos todos excepto el que coincida con el ID
+      return listaActual.filter(item => item.identificadorUnico !== idParaRemover);
+    });
+  };
+
+  // --- FUNCIÓN NUEVA: LIMPIAR TODO (Para la página de éxito) ---
+  const vaciarCarritoCompletamente = () => {
+    establecerListaDeProductos([]);
   };
 
   // Calculamos el total de productos para el circulito del Header
@@ -38,6 +57,8 @@ export function ProveedorDelCarrito({ children }) {
     <CarritoContextoPrivado.Provider value={{ 
       listaDeProductosEnElCarrito, 
       agregarProductoAlCarrito,
+      removerProductoDelCarrito, // <--- Exportamos la nueva función
+      vaciarCarritoCompletamente,  // <--- Exportamos la nueva función
       totalDeArticulosAgregados 
     }}>
       {children}
@@ -47,5 +68,9 @@ export function ProveedorDelCarrito({ children }) {
 
 // 3. Este es el "Gancho" (Hook) para que otros componentes usen el carrito
 export function usarCarrito() {
-  return useContext(CarritoContextoPrivado);
+  const contexto = useContext(CarritoContextoPrivado);
+  if (!contexto) {
+    throw new Error("usarCarrito debe usarse dentro de un ProveedorDelCarrito");
+  }
+  return contexto;
 }

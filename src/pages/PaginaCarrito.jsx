@@ -8,7 +8,8 @@ import { loadStripe } from '@stripe/stripe-js';
 const stripePromesa = loadStripe('pk_test_51TEyjxAmH9GoXamvzRH64B3bSMlqPap6WXrxy6KjZC5KGzjvCBR3JIEhyrmp2PsOSHnLEDFvkOqD7H8QJebMsSvB00SALbkruN');
 
 export function PaginaCarrito() {
-  const { listaDeProductosEnElCarrito } = usarCarrito();
+  // Extraes la lista y la función de remover
+  const { listaDeProductosEnElCarrito, removerProductoDelCarrito } = usarCarrito();
   
   // Estados para el sistema de cupones
   const [codigoDeCuponIngresado, establecerCodigoDeCupon] = useState("");
@@ -96,7 +97,11 @@ export function PaginaCarrito() {
                 <p>Cantidad: {producto.cantidadEnCarrito}</p>
                 <p className="precio-item">${producto.precioEnPesosMexicanos} MXN c/u</p>
               </div>
-              <button className="boton-eliminar-item">
+              {/* BOTÓN DE ELIMINAR */}
+              <button 
+                className="boton-eliminar-item"
+                onClick={() => removerProductoDelCarrito(producto.identificadorUnico)}
+              >
                 <Trash2 size={20} color="#ff4757" />
               </button>
             </div>
