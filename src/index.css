@@ -1,0 +1,28 @@
+/* Reseteo básico para que todos los navegadores se vean igual */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9fafb; /* Un gris muy claro para el fondo */
+  color: #333333;
+}
+
+/* Esta es la clase principal que envolverá toda nuestra página */
+.contenedor-principal-de-la-pagina {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 100vh significa el 100% de la altura de la pantalla */
+}
+
+/* El contenido del medio debe expandirse para empujar el footer hacia abajo */
+.contenido-dinamico-central {
+  flex: 1; 
+  padding: 20px;
+  max-width: 1200px; /* Ancho máximo para que no se vea estirado en pantallas gigantes */
+  margin: 0 auto; /* Centrar el contenido */
+  width: 100%;
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "identificadorUnico": "prod_001",
+    "nombreDelProducto": "Camiseta Básica de Algodón",
+    "descripcionDetallada": "Camiseta 100% algodón, ideal para el clima de México. Perfecta para uso diario.",
+    "precioEnPesosMexicanos": 250.00,
+    "categoriaDelProducto": "Ropa",
+    "imagenesDelProducto": [
+      "/imagenes/camiseta-frente.jpg",
+      "/imagenes/camiseta-espalda.jpg"
+    ],
+    "cantidadDisponibleEnInventario": 50,
+    "productosRelacionadosPorId": ["prod_002", "prod_003"],
+    "etiquetasParaFiltro": ["nuevo", "veranos"]
+  },
+  {
+    "identificadorUnico": "prod_002",
+    "nombreDelProducto": "Pantalón de Mezclilla Clásico",
+    "descripcionDetallada": "Pantalón de mezclilla resistente, corte recto.",
+    "precioEnPesosMexicanos": 600.00,
+    "categoriaDelProducto": "Ropa",
+    "imagenesDelProducto": [
+      "/imagenes/pantalon-frente.jpg"
+    ],
+    "cantidadDisponibleEnInventario": 20,
+    "productosRelacionadosPorId": ["prod_001"],
+    "etiquetasParaFiltro": ["clasico", "oferta"]
+  }
+]

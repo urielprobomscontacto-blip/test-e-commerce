@@ -1,0 +1,206 @@
+.layout-con-sidebar {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.panel-de-filtros {
+  width: 250px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  height: fit-content;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  position: sticky; /* Se queda pegado al hacer scroll */
+  top: 20px;
+}
+
+.grupo-filtro {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.grupo-filtro label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.grupo-filtro select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.seccion-de-listado {
+  flex: 1; /* Toma todo el espacio restante */
+}
+
+.mensaje-sin-resultados {
+  text-align: center;
+  padding: 50px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Responsivo: Si la pantalla es pequeña, el filtro se pone arriba */
+@media (max-width: 768px) {
+  .layout-con-sidebar {
+    flex-direction: column;
+  }
+  .panel-de-filtros {
+    width: 100%;
+    position: relative;
+  }
+}
+
+.contenedor-detalle-producto {
+  margin-top: 20px;
+}
+
+.grid-detalle-principal {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+  gap: 50px;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Galería */
+.contenedor-imagen-grande img {
+  width: 100%;
+  height: 500px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.carrete-miniaturas {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.miniatura, .miniatura-activa {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px solid transparent;
+}
+
+.miniatura-activa { border-color: #007bff; }
+
+/* Texto y Compra */
+.titulo-producto-detalle { font-size: 2rem; margin: 10px 0; }
+.precio-detalle { font-size: 1.5rem; color: #007bff; font-weight: bold; }
+.categoria-badge { background: #e9ecef; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; }
+.divisor { height: 1px; background: #eee; margin: 20px 0; }
+.descripcion-texto { line-height: 1.6; color: #555; margin-bottom: 30px; }
+
+.boton-agregar-grande {
+  width: 100%;
+  padding: 15px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.boton-agregar-grande:hover { background: #218838; }
+
+.beneficios-compra { margin-top: 30px; display: flex; flex-direction: column; gap: 15px; }
+.beneficio { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #666; }
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .grid-detalle-principal { grid-template-columns: 1fr; }
+}
+
+.contenedor-carrito-pagina { padding-top: 20px; }
+
+.grid-carrito {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.item-carrito {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.item-carrito img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; }
+
+.info-item { flex: 1; }
+.info-item h3 { font-size: 1.1rem; margin-bottom: 5px; }
+.precio-item { font-weight: bold; color: #007bff; }
+
+.resumen-compra-panel {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  height: fit-content;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.linea-resumen {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  color: #666;
+}
+
+.total-negrita {
+  border-top: 2px solid #eee;
+  padding-top: 15px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #000;
+}
+
+.seccion-cupon-input { margin: 20px 0; }
+.input-con-boton { display: flex; gap: 5px; }
+.input-con-boton input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+.input-con-boton button { background: #333; color: white; border: none; padding: 0 15px; border-radius: 5px; cursor: pointer; }
+
+.mensaje-exito-cupon { color: #28a745; font-size: 0.85rem; margin-top: 5px; font-weight: bold; }
+.mensaje-error-cupon { color: #ff4757; font-size: 0.85rem; margin-top: 5px; }
+
+.boton-pagar-ahora {
+  width: 100%;
+  background: #635bff; /* Color oficial de Stripe */
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+.carrito-vacio { text-align: center; padding: 100px 20px; }
+.boton-volver { display: inline-block; margin-top: 20px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+
+@media (max-width: 850px) {
+  .grid-carrito { grid-template-columns: 1fr; }
+}
