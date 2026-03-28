@@ -11,10 +11,22 @@ export function ProveedorDelCarrito({ children }) {
     return datosGuardados ? JSON.parse(datosGuardados) : [];
   });
 
+  const [notificacion, establecerNotificacion] = useState({ mensaje: '', visible: false, tipo: '' });
+
   // PERSISTENCIA: Cada vez que el carrito cambie, lo guardamos en el navegador
   useEffect(() => {
     localStorage.setItem('mi_carrito_real', JSON.stringify(listaDeProductosEnElCarrito));
   }, [listaDeProductosEnElCarrito]);
+
+  // --- FUNCIÓN PARA MOSTRAR EL POP-UP ---
+  const mostrarPopUp = (mensaje, tipo) => {
+    establecerNotificacion({ mensaje, visible: true, tipo });
+    
+    // Desaparecer después de 3 segundos
+    setTimeout(() => {
+      establecerNotificacion({ mensaje: '', visible: false, tipo: '' });
+    }, 3000);
+  };
 
   // --- FUNCIÓN: AGREGAR PRODUCTO ---
   const agregarProductoAlCarrito = (productoParaAgregar) => {
@@ -59,7 +71,8 @@ export function ProveedorDelCarrito({ children }) {
       agregarProductoAlCarrito,
       removerProductoDelCarrito, // <--- Exportamos la nueva función
       vaciarCarritoCompletamente,  // <--- Exportamos la nueva función
-      totalDeArticulosAgregados 
+      totalDeArticulosAgregados,
+      notificacion
     }}>
       {children}
     </CarritoContextoPrivado.Provider>

@@ -17,9 +17,12 @@ import { PaginaCarrito } from './pages/PaginaCarrito';
 
 import PaginaExito from './pages/PaginaExito';
 
+import Notificacion from './components/Notificacion';
+
 export default function App() {
   return (
     <ProveedorDelCarrito> {/* <-- ENVOLVEMOS AQUÍ */}
+      <Notificacion />
       <BrowserRouter>
         <div className="contenedor-principal-de-la-pagina">
           <HeaderPrincipal />

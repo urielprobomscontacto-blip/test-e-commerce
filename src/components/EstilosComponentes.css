@@ -48,3 +48,35 @@
 }
 
 .animacion-rebote { animation: rebote 0.5s ease; }
+
+.pop-up-notificacion {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 9999;
+  animation: deslizarEntrada 0.3s ease-out;
+}
+
+.pop-up-notificacion.exito {
+  background-color: #2ecc71; /* Verde */
+}
+
+.pop-up-notificacion.borrado {
+  background-color: #e74c3c; /* Rojo */
+}
+
+@keyframes deslizarEntrada {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
