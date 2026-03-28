@@ -22,11 +22,11 @@ import Notificacion from './components/Notificacion';
 export default function App() {
   return (
     <ProveedorDelCarrito> {/* <-- ENVOLVEMOS AQUÍ */}
-      <Notificacion />
       <BrowserRouter>
         <div className="contenedor-principal-de-la-pagina">
           <HeaderPrincipal />
           <main className="contenido-dinamico-central">
+            <Notificacion />
             <Routes>
               <Route path="/" element={<PaginaPrincipal />} />
               <Route path="/producto/:identificadorDelProducto" element={<PaginaDelProducto />} />
