@@ -36,7 +36,6 @@ export function TarjetaProducto({ datosDelProducto }) {
             className={`boton-agregar-miniatura ${estaAnimando ? 'animacion-rebote' : ''}`}
           >
             Agregar al Carrito
-            <ShoppingCart size={18} />
           </button>
         </div>
       </div>
