@@ -17,11 +17,13 @@ export function TarjetaProducto({ datosDelProducto }) {
 
   return (
     <div className="tarjeta-contenedor">
-      <img 
-        src={datosDelProducto.imagenesDelProducto[0]} 
-        alt={datosDelProducto.nombreDelProducto} 
-        className="imagen-producto-tarjeta"
-      />
+      <Link to={`/producto/${datosDelProducto.identificadorUnico}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <img 
+          src={datosDelProducto.imagenesDelProducto[0]} 
+          alt={datosDelProducto.nombreDelProducto} 
+          className="imagen-producto-tarjeta"
+        />
+      </Link>
       <div className="info-tarjeta">
         <Link to={`/producto/${datosDelProducto.identificadorUnico}`} style={{ textDecoration: 'none', color: 'inherit' }}>
           <h4 className="nombre-producto">{datosDelProducto.nombreDelProducto}</h4>
