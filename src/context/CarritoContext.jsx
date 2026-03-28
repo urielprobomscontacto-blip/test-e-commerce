@@ -35,6 +35,8 @@ export function ProveedorDelCarrito({ children }) {
         (item) => item.identificadorUnico === productoParaAgregar.identificadorUnico
       );
 
+      mostrarPopUp(`¡${productoParaAgregar.nombreDelProducto} añadido!`, 'exito');
+
       if (productoYaExiste) {
         return listaActual.map((item) =>
           item.identificadorUnico === productoParaAgregar.identificadorUnico
@@ -49,7 +51,9 @@ export function ProveedorDelCarrito({ children }) {
   // --- FUNCIÓN NUEVA: REMOVER PRODUCTO ---
   const removerProductoDelCarrito = (idParaRemover) => {
     establecerListaDeProductos((listaActual) => {
-      // Filtramos la lista: dejamos todos excepto el que coincida con el ID
+      const producto = listaActual.find(p => p.identificadorUnico === idParaRemover);
+      if (producto) mostrarPopUp(`Eliminado: ${producto.nombreDelProducto}`, 'borrado'); // <-- Notificación
+      
       return listaActual.filter(item => item.identificadorUnico !== idParaRemover);
     });
   };
